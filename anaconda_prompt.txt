@@ -1,0 +1,57 @@
+<환경구축>
+
+1. 컴퓨터 정리
+
+- 파이썬 버전 한개만 남게 다지우고 오래된 아나콘다 및 파이썬 삭제
+
+- 윈도우+X => 단축메뉴
+
+> 앱 및 기능=> python 검색 후 관련된 프로그램 다 삭제
+(아나콘다 있으면 제거, 파이썬, 파이썬 런쳐 제거)
+
+> 확인: 삭제 후 단축메뉴 window PowerShell or CMD 에 Python 치면 나오는거 실행되는게 없어야됨
+
+> C> user> user> .conda, .ipython, .matplotlib, .jupyter 등 기존 파이썬 관련 폴더 다 삭제
+
+> 윈도우+x => 시스템 => 고급 시스템 설정> 환경 변수에서 user, 시스템 변수의 "PATH"에서
+파이썬 관련 경로 삭제
+
+2. 아나콘다 마지막 clear the package cache 삭제 부분은 클릭하고 설치
+
+3. 아나콘다 사용법 => "Anaconda prompt" 들어가면 (base) 보임 
+ # 잘못되면 돌아와야 하는 구간이므로 여기에서 작업하거나 손대지마세요...
+
+	- conda env list
+	( * 뒤에 있는게 내가 사용하고 있는 베이스 환경)
+	- conda create -n torch-book python=3.12
+	(torch-book이라는 가상환경 만들어라, 이건 내마음임, **python 버전 명시 반드시)
+	- conda activate torch-book
+	(base에서 작업하지 않고 내가 만든 가상환경 activate 하고 거기서 작업하도록)
+	- conda deactivate 
+	(라고 하면 활성화 중단하고 베이스로 감)
+	- ( 삭제할일 있으면 conda remove -n torch-book )
+
+4. 필요 라이브러리 설치 **반드시 torch-book 안에서, base ㄴㄴ
+
+> Pytorch 가서 https://pytorch.org/get-started/locally/ 에서 내 사양 선택해서 나오는거
+
+> 그대로 anaconda prompt에 입력하고 설치
+
+> C에 내가 만든걸  프로젝트 경로로 cd 해서 이동하고
+
+> 그 경로에서 conda activate torch-book 하고
+
+> conda install -c conda-forge jupyterlab
+
+> jupyter-lab
+
+>설치할 거 있으면 jupyter에서 바로 하지말고 prompt에서 base 아닌거 확인하고 거기서 설치하거나
+
+>jupyter에서는 ex) !conda install anaconda::pandas -y 
+//처럼, y 옵션을 미리 주면서 설치해야함.
+
+
+* 파이썬 설치 경로 확인 : python -c "import sys; print(sys.executable);" 
+
+* 토치 버전 확인 : python -c "import torch; print(torch.__version__);"
+
